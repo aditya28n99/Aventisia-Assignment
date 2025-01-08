@@ -1,10 +1,13 @@
 import './App.css'
+import ApplicationLandingScreen from './pages/ApplicationLandingScreen'
 
 function App() {
 
   return (
-      <h1 className='text-red-500 font-bold'>Hello React!!</h1>  
+      <>
+      <ApplicationLandingScreen/>
+      </>  
   )
 }
 
-export default App
+export default App;
