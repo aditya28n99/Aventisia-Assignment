@@ -6,6 +6,7 @@ import Model from '../components/ApplicationLandingScreen/Model/Model';
 import Test from '../components/ApplicationLandingScreen/Test/Test';
 import Settings from '../components/ApplicationLandingScreen/Settings/Settings';
 import Support from '../components/ApplicationLandingScreen/Support/Support';
+import Navbar from '../components/Navbar/Navbar';
 
 export default function ApplicationLandingScreen() {
   //setting up a component state for the screen from sidebar
@@ -35,6 +36,7 @@ export default function ApplicationLandingScreen() {
     <div className="flex">
       <Sidebar setCurrentView={setCurrentView} />
       <div className="flex-grow">
+        <Navbar/>
         <div className="p-6">{renderView()}</div>
       </div>
     </div>
