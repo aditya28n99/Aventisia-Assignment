@@ -171,7 +171,7 @@ export default function ModelLibrary() {
                         pageCount={Math.ceil(data.length / itemsPerPage)}
                         onPageChange={(e) => setCurrentPage(e.selected)}
                         containerClassName={"flex gap-2"}
-                        activeClassName={"font-bold"}
+                        activeClassName={"font-bold bg-blue-800 text-white"}
                         pageClassName={"px-3 py-1 border rounded-full cursor-pointer bg-blue-200"}
                         previousClassName={"px-3 py-1 border rounded-lg cursor-pointer rounded-full bg-blue-200 hover:bg-blue-600"}
                         nextClassName={"px-3 py-1 border rounded-lg cursor-pointer rounded-full bg-blue-200 hover:bg-blue-600"}
