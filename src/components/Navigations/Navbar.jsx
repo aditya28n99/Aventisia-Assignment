@@ -5,7 +5,7 @@ import { TbVector } from "react-icons/tb";
 export default function Navbar() {
   return (
     //Tried to Maintain Padding and Margins as per the given Screen Shots..
-    <div className='flex border gap-[106px] w-full h-[92px] p-6 items-center'>
+    <div className='flex border gap-[106px] w-full h-[92px] p-6 items-center bg-white'>
       <div>
         <h1 className='text-lg font-semibold'>AI/ML Modle Builder</h1>
       </div>

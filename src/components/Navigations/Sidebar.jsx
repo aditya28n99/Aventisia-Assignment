@@ -7,7 +7,7 @@ import { FiSettings } from "react-icons/fi";
 export default function Sidebar({ setCurrentView }) {
     //we are passing the required component from the sidebar to show that on the app landing page. 
     return (
-      <div className="flex flex-col border w-[264px]">
+      <div className="flex flex-col border w-[264px] bg-white text-sm font-medium">
         <div className="flex pl-6 bg-slate-100 h-[92px] items-center">
           <img src={Aventisia} alt="Logo" className="w-[166.01px]" />
         </div>
@@ -48,7 +48,7 @@ export default function Sidebar({ setCurrentView }) {
             </button>
           </div>
           <div>
-            <h1>Settings</h1>
+            <h1>Help</h1>
             <button
               onClick={() => setCurrentView('Settings')}
               className="flex gap-2 items-center p-2 rounded-lg hover:bg-blue-700 hover:text-white"

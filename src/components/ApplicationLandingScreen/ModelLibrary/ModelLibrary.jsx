@@ -86,7 +86,7 @@ export default function ModelLibrary() {
     };
 
     return (
-        <div className="p-5 border rounded-md">
+        <div className="p-5 rounded-md bg-white">
             {/*Top Section for model for searching sorting*/}
             <div className="flex flex-col gap-3">
                 <div className="flex justify-between items-center">
