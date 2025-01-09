@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { CiSearch } from "react-icons/ci";
 import { PiArrowsLeftRightLight } from "react-icons/pi";
 import { BiSortAlt2 } from "react-icons/bi";
@@ -7,8 +7,8 @@ import DateRangePicker from "../../ModelLibrary/DateRangePicker/DateRangePicker"
 
 export default function ModelLibrary() {
 
-    // Dummy data for the 
-    const data = [
+    // Dummy data / to sort and search using state veriable data for this initialData
+    const initialData = [
         {
             id: "#5412448",
             modelName: "Blonde Drizzle",
@@ -29,6 +29,23 @@ export default function ModelLibrary() {
         },
     ];
 
+    const [data, setData] = useState(initialData);
+    const [searchText, setSearchText] = useState("");
+
+    // Function for searching by id and name
+    const handleSearch = (e) => {
+        // const text = e.target.toLowerCase();
+        const text = e.target.value.toLowerCase();
+        setSearchText(text);
+        setData(
+            initialData.filter(
+                (item) =>
+                    item.modelName.toLowerCase().includes(text) ||
+                    item.id.toLowerCase().includes(text)
+            )
+        );
+    };
+
     return (
         <div className="p-5 border rounded-md">
             {/*Top Section for model for searching sorting*/}
@@ -48,6 +65,7 @@ export default function ModelLibrary() {
                             type="text"
                             placeholder="Search By Name, ID"
                             className="bg-transparent outline-none pl-2"
+                            onChange={handleSearch}
                         />
                     </div>
                     {/* Here we can filter out data by A-Z or Z-A */}
@@ -99,7 +117,7 @@ export default function ModelLibrary() {
                                         </div>
                                     </td>
                                     <td className="p-4">{item.modelType}</td>
-                                    {/* added trucate not to wrap the line */}
+                                    {/* added truncate not to wrap the line */}
                                     <td className="p-4 truncate max-w-xs">{item.description}</td>
                                     <td className="p-4 text-center">{item.createdOn}</td>
                                     <td className="p-4 text-center">{item.lastTrainedOn}</td>
