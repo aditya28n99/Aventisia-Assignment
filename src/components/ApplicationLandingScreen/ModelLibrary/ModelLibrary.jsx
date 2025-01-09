@@ -3,8 +3,10 @@ import { CiSearch } from "react-icons/ci";
 import { PiArrowsLeftRightLight } from "react-icons/pi";
 import { BiSortAlt2 } from "react-icons/bi";
 import { BsThreeDotsVertical } from "react-icons/bs";
+import { FiPlus } from "react-icons/fi";
 import DateRangePicker from "../../ModelLibrary/DateRangePicker/DateRangePicker";
 import NewModelPopup from "../../ModelLibrary/DateRangePicker/NewModelPopup";
+import Button from "../../Button/Button";
 
 export default function ModelLibrary() {
 
@@ -90,11 +92,14 @@ export default function ModelLibrary() {
             {/*Top Section for model for searching sorting*/}
             <div className="flex flex-col gap-3">
                 <div className="flex justify-between items-center">
-                    <h1 className="text-lg font-semibold">Model Library</h1>
-                    {/* button for create new model. */}
-                    <button className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700" onClick={togglePopup}>
+                    <h1 className="text-lg font-medium">Model Library</h1>
+                    {/* Importing Button for create new model. */}
+                    <Button
+                        onClick={togglePopup}
+                        className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700"
+                        icon={FiPlus}>
                         Create New Model
-                    </button>
+                    </Button>
                 </div>
                 {/* New line - serch, filter, and sorting */}
                 <div className="flex items-center gap-4">
@@ -127,22 +132,22 @@ export default function ModelLibrary() {
                         <thead className="text-left border-b">
                             <tr>
                                 <th className="p-4 font-semibold">
-                                    Model Name <BiSortAlt2 className="inline ml-2 cursor-pointer" />
+                                    Model Name <BiSortAlt2 className="inline ml-1 cursor-pointer" />
                                 </th>
                                 <th className="p-4 font-semibold">
-                                    Model Type <BiSortAlt2 className="inline ml-2 cursor-pointer" />
+                                    Model Type <BiSortAlt2 className="inline ml-1 cursor-pointer" />
                                 </th>
                                 <th className="p-4 font-semibold">
-                                    Description <BiSortAlt2 className="inline ml-2 cursor-pointer" />
+                                    Description <BiSortAlt2 className="inline ml-1 cursor-pointer" />
                                 </th>
                                 <th className="p-4 font-semibold">
-                                    Created On <BiSortAlt2 className="inline ml-2 cursor-pointer" />
+                                    Created On <BiSortAlt2 className="inline ml-1 cursor-pointer" />
                                 </th>
                                 <th className="p-4 font-semibold">
-                                    Last Trained On <BiSortAlt2 className="inline ml-2 cursor-pointer" />
+                                    Last Trained On <BiSortAlt2 className="inline ml-1 cursor-pointer" />
                                 </th>
                                 <th className="p-4 font-semibold">
-                                    Status <BiSortAlt2 className="inline ml-2 cursor-pointer" />
+                                    Status <BiSortAlt2 className="inline ml-1 cursor-pointer" />
                                 </th>
                                 <th className="p-4 font-semibold">Action</th>
                             </tr>
@@ -165,7 +170,7 @@ export default function ModelLibrary() {
                                     <td className="p-4 text-center">{item.createdOn}</td>
                                     <td className="p-4 text-center">{item.lastTrainedOn}</td>
                                     <td className="p-4 text-center">
-                                        <span className={`${item.status === 'Active' ? "bg-green-100 text-green-600" : "bg-red-100 text-red-600"} px-2 py-1 rounded-lg`}>
+                                        <span className={`${item.status === 'Active' ? "bg-green-100 text-green-600" : "bg-red-100 text-red-600"} px-4 py-1 rounded-lg text-sm`}>
                                             {item.status}
                                         </span>
                                     </td>
