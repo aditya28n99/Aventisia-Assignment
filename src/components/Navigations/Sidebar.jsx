@@ -9,7 +9,7 @@ export default function Sidebar({ setCurrentView, currentView }) {
 
   //we are passing the required component from the sidebar to show that on the app landing page. 
   return (
-    <div className="flex flex-col border w-[264px] bg-white text-sm font-medium">
+    <div className="flex flex-col border w-[264px] bg-white text-sm font-medium shadow-md">
       <div className="flex pl-6 bg-slate-100 h-[92px] items-center">
         <img src={Aventisia} alt="Logo" className="w-[166.01px]" />
       </div>
@@ -27,7 +27,7 @@ export default function Sidebar({ setCurrentView, currentView }) {
           </button> */}
 
           {/* Improved code with this button component */}
-          
+
           <Button
             onClick={() => setCurrentView('ModelLibrary')}
             isActive={currentView === "ModelLibrary"}
