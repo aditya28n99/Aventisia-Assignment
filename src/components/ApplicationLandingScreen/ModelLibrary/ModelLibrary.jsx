@@ -4,6 +4,7 @@ import { PiArrowsLeftRightLight } from "react-icons/pi";
 import { BiSortAlt2 } from "react-icons/bi";
 import { BsThreeDotsVertical } from "react-icons/bs";
 import DateRangePicker from "../../ModelLibrary/DateRangePicker/DateRangePicker";
+import NewModelPopup from "../../ModelLibrary/DateRangePicker/NewModelPopup";
 
 export default function ModelLibrary() {
 
@@ -50,6 +51,11 @@ export default function ModelLibrary() {
     const [data, setData] = useState(initialData);
     const [searchText, setSearchText] = useState("");
     const [sortOrder, setSortOrder] = useState("asc");
+    const [isPopupOpen, setIsPopupOpen] = useState(false);
+
+    const togglePopup = () => {
+        setIsPopupOpen(!isPopupOpen);
+    };
 
     // Function for searching by id and name
     const handleSearch = (e) => {
@@ -86,7 +92,7 @@ export default function ModelLibrary() {
                 <div className="flex justify-between items-center">
                     <h1 className="text-lg font-semibold">Model Library</h1>
                     {/* button for create new model. */}
-                    <button className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700">
+                    <button className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700" onClick={togglePopup}>
                         Create New Model
                     </button>
                 </div>
@@ -106,8 +112,8 @@ export default function ModelLibrary() {
                         <PiArrowsLeftRightLight className="text-gray-500" />
                         <h1>Filter</h1>
                         <select className="bg-transparent outline-none px-1"
-                        value={sortOrder}
-                        onChange={handleSort}>
+                            value={sortOrder}
+                            onChange={handleSort}>
                             {/* <option value="none" disabled className="p-2">Filter</option> */}
                             <option value="asc" className="p-2">A-Z</option>
                             <option value="desc" className="p-2">Z-A</option>
@@ -182,6 +188,8 @@ export default function ModelLibrary() {
                     </table>
                 </div>
             </div>
+            {/*  NewModel Pop-up window will get toggeled*/}
+            {isPopupOpen ? <NewModelPopup isOpen={isPopupOpen} togglePopup={togglePopup} /> : <></>}
         </div>
     );
 }
