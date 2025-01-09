@@ -33,12 +33,15 @@ export default function ApplicationLandingScreen() {
   };
 
   return (
-    <div className="flex bg-slate-100 h-screen">
-      <Sidebar setCurrentView={setCurrentView} currentView={currentView} />
-      <div className="flex-grow">
-        <Navbar/>
-        <div className="p-6">{renderView()}</div>
-      </div>
+    <div className="flex h-screen overflow-hidden bg-slate-100">
+  <Sidebar setCurrentView={setCurrentView} currentView={currentView} />
+  <div className="flex flex-col flex-grow">
+    <Navbar />
+    <div className="flex-grow overflow-auto p-6">
+      {renderView()}
     </div>
+  </div>
+</div>
+
   );
 }
