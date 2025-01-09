@@ -1,6 +1,7 @@
 import React from "react";
 import { CiSearch } from "react-icons/ci";
 import { PiArrowsLeftRightLight } from "react-icons/pi";
+import DateRangePicker from "../../ModelLibrary/DateRangePicker/DateRangePicker";
 
 export default function ModelLibrary() {
 
@@ -33,6 +34,7 @@ export default function ModelLibrary() {
                             <option value="desc" className="p-2">Z-A</option>
                         </select>
                     </div>
+                    <DateRangePicker/>
                 </div>
             </div>
         </div>
