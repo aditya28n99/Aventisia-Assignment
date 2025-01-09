@@ -104,7 +104,7 @@ export default function ModelLibrary() {
                                     <td className="p-4 text-center">{item.createdOn}</td>
                                     <td className="p-4 text-center">{item.lastTrainedOn}</td>
                                     <td className="p-4 text-center">
-                                        <span className="bg-green-100 text-green-600 px-2 py-1 rounded-lg">
+                                        <span className={`${item.status === 'Active' ? "bg-green-100 text-green-600" : "bg-red-100 text-red-600"} px-2 py-1 rounded-lg`}>
                                             {item.status}
                                         </span>
                                     </td>
