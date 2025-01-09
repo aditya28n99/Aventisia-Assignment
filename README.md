@@ -16,12 +16,6 @@ This project is a part of the evaluation process for the React.js Front-End Deve
 - **Table with Dummy Data**: The table displays at least 40 results, with pagination, sorting, and a search functionality for the model name.
 - **Pop-up Modal**: A pop-up window that opens when the user clicks on "Create New Model." Upon saving the data in the modal, the data is logged to the browser console.
 
-### Color Scheme:
-- **Primary Color**: `#4F46E5`
-- **Secondary Color**: `#1E1B4B`
-
----
-
 ## Features Implemented
 
 ### UI Implementation:
@@ -69,3 +63,11 @@ This project is a part of the evaluation process for the React.js Front-End Deve
   - **Commit**: `d27dcd9` - lib table added with dummy data
 
 ---
+### Demo
+A live demo of the project can be seen here: [https://aventisia-assignment.onrender.com/]
+
+### Future Enhancements
+- Implement backend functionality to persist model data.
+- Responsive designing
+- Add form validation to the modal for better user experience.
+- Improve accessibility features for a wider audience.
