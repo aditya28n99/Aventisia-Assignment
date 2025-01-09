@@ -20,7 +20,25 @@ export default function ModelLibrary() {
         },
         {
             id: "#5412448",
-            modelName: "John Sina",
+            modelName: "Peater Drizzle",
+            modelType: "Extraction",
+            description: "Edit customer and there truncate max-w-xs truncate max-w-xs truncate max-w-xs",
+            createdOn: "29/02/2024",
+            lastTrainedOn: "02/03/2024",
+            status: "Active",
+        },
+        {
+            id: "#5412448",
+            modelName: "Baby Sina",
+            modelType: "Classification",
+            description: "Edit customer",
+            createdOn: "29/02/2024",
+            lastTrainedOn: "02/03/2024",
+            status: "Expired",
+        },
+        {
+            id: "#5412448",
+            modelName: "sam Nivesh",
             modelType: "Classification",
             description: "Edit customer",
             createdOn: "29/02/2024",
@@ -31,6 +49,7 @@ export default function ModelLibrary() {
 
     const [data, setData] = useState(initialData);
     const [searchText, setSearchText] = useState("");
+    const [sortOrder, setSortOrder] = useState("asc");
 
     // Function for searching by id and name
     const handleSearch = (e) => {
@@ -44,6 +63,20 @@ export default function ModelLibrary() {
                     item.id.toLowerCase().includes(text)
             )
         );
+    };
+
+    // Sorting Function ascending and decending by model name
+    const handleSort = (e) => {
+        const order = e.target.value;
+        setSortOrder(order);
+        const sortedData = [...data].sort((a, b) => {
+            if (order === "asc") {
+                return a.modelName.localeCompare(b.modelName);
+            } else {
+                return b.modelName.localeCompare(a.modelName);
+            }
+        });
+        setData(sortedData);
     };
 
     return (
@@ -71,7 +104,11 @@ export default function ModelLibrary() {
                     {/* Here we can filter out data by A-Z or Z-A */}
                     <div className="flex items-center gap-2 border rounded-lg px-4 py-2">
                         <PiArrowsLeftRightLight className="text-gray-500" />
-                        <select className="bg-transparent outline-none px-1">
+                        <h1>Filter</h1>
+                        <select className="bg-transparent outline-none px-1"
+                        value={sortOrder}
+                        onChange={handleSort}>
+                            {/* <option value="none" disabled className="p-2">Filter</option> */}
                             <option value="asc" className="p-2">A-Z</option>
                             <option value="desc" className="p-2">Z-A</option>
                         </select>
