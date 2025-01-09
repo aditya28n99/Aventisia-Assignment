@@ -34,7 +34,7 @@ export default function ApplicationLandingScreen() {
 
   return (
     <div className="flex bg-slate-100 h-screen">
-      <Sidebar setCurrentView={setCurrentView} />
+      <Sidebar setCurrentView={setCurrentView} currentView={currentView} />
       <div className="flex-grow">
         <Navbar/>
         <div className="p-6">{renderView()}</div>
