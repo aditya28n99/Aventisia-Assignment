@@ -142,7 +142,7 @@ export default function ModelLibrary() {
                                         </span>
                                     </td>
                                     <td className="p-4 text-center">
-                                        <button className="relative">
+                                        <div className="relative"> 
                                             <BsThreeDotsVertical />
                                             <div className="absolute right-0 mt-2 w-32 bg-white shadow-lg rounded-lg p-2 hidden group-hover:block">
                                                 <button className="block w-full text-left px-4 py-2 hover:bg-gray-100">
@@ -152,7 +152,7 @@ export default function ModelLibrary() {
                                                     Delete
                                                 </button>
                                             </div>
-                                        </button>
+                                        </div>
                                     </td>
                                 </tr>
                             ))}
