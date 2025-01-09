@@ -5,8 +5,8 @@ import { AiOutlineCalendar } from "react-icons/ai";
 import { format } from "date-fns";
 
 export default function DateRangePicker() {
-  const [startDate, setStartDate] = useState(null);
-  const [endDate, setEndDate] = useState(null);
+  const [startDate, setStartDate] = useState("Jan 09");
+  const [endDate, setEndDate] = useState("Jan 10");
 
   const handleDateChange = (dates) => {
     const [start, end] = dates;
@@ -18,7 +18,7 @@ export default function DateRangePicker() {
   const formatDate = (date) => (date ? format(date, "MMM dd") : "");
 
   return (
-    <div className="flex items-center gap-2 px-4 py-2 border rounded-lg">
+    <div className="flex items-center gap-2 px-2 py-2 border rounded-lg">
       <AiOutlineCalendar className="text-gray-500" />
       {/* Here using react-datepicker */}
       <DatePicker
