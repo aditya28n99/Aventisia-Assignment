@@ -7,53 +7,20 @@ import { FiPlus } from "react-icons/fi";
 import DateRangePicker from "../../ModelLibrary/DateRangePicker/DateRangePicker";
 import NewModelPopup from "../../ModelLibrary/DateRangePicker/NewModelPopup";
 import Button from "../../Button/Button";
+import ReactPaginate from "react-paginate";
+import {initialData} from '../../../Database/data'
 
 export default function ModelLibrary() {
-
-    // Dummy data / to sort and search using state veriable data for this initialData
-    const initialData = [
-        {
-            id: "#5412448",
-            modelName: "Blonde Drizzle",
-            modelType: "Extraction",
-            description: "Edit customer and there truncate max-w-xs truncate max-w-xs truncate max-w-xs",
-            createdOn: "29/02/2024",
-            lastTrainedOn: "02/03/2024",
-            status: "Active",
-        },
-        {
-            id: "#5412448",
-            modelName: "Peater Drizzle",
-            modelType: "Extraction",
-            description: "Edit customer and there truncate max-w-xs truncate max-w-xs truncate max-w-xs",
-            createdOn: "29/02/2024",
-            lastTrainedOn: "02/03/2024",
-            status: "Active",
-        },
-        {
-            id: "#5412448",
-            modelName: "Baby Sina",
-            modelType: "Classification",
-            description: "Edit customer",
-            createdOn: "29/02/2024",
-            lastTrainedOn: "02/03/2024",
-            status: "Expired",
-        },
-        {
-            id: "#5412448",
-            modelName: "sam Nivesh",
-            modelType: "Classification",
-            description: "Edit customer",
-            createdOn: "29/02/2024",
-            lastTrainedOn: "02/03/2024",
-            status: "Expired",
-        },
-    ];
 
     const [data, setData] = useState(initialData);
     const [searchText, setSearchText] = useState("");
     const [sortOrder, setSortOrder] = useState("asc");
     const [isPopupOpen, setIsPopupOpen] = useState(false);
+    const [currentPage, setCurrentPage] = useState(0);
+
+    const itemsPerPage = 10;
+    const offset = currentPage * itemsPerPage;
+    const currentItems = data.slice(offset, offset + itemsPerPage);
 
     const togglePopup = () => {
         setIsPopupOpen(!isPopupOpen);
@@ -153,7 +120,7 @@ export default function ModelLibrary() {
                             </tr>
                         </thead>
                         <tbody>
-                            {data.map((item, index) => (
+                            {currentItems.map((item, index) => (
                                 <tr
                                     key={index}
                                     className="border-b hover:bg-gray-100"
@@ -191,6 +158,24 @@ export default function ModelLibrary() {
                             ))}
                         </tbody>
                     </table>
+                </div>
+                {/* Bottom Section (Pagination) */}
+                <div className="mt-4 flex justify-between items-center">
+                    <p>
+                        Showing {offset + 1} to {Math.min(offset + itemsPerPage, data.length)}{" "}
+                        out of {data.length} results
+                    </p>
+                    <ReactPaginate
+                        previousLabel={"<"}
+                        nextLabel={">"}
+                        pageCount={Math.ceil(data.length / itemsPerPage)}
+                        onPageChange={(e) => setCurrentPage(e.selected)}
+                        containerClassName={"flex gap-2"}
+                        activeClassName={"font-bold"}
+                        pageClassName={"px-3 py-1 border rounded-full cursor-pointer bg-blue-200"}
+                        previousClassName={"px-3 py-1 border rounded-lg cursor-pointer rounded-full bg-blue-200 hover:bg-blue-600"}
+                        nextClassName={"px-3 py-1 border rounded-lg cursor-pointer rounded-full bg-blue-200 hover:bg-blue-600"}
+                    />
                 </div>
             </div>
             {/*  NewModel Pop-up window will get toggeled*/}
