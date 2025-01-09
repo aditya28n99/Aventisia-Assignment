@@ -55,7 +55,9 @@ export default function NewModelPopup({ isOpen, togglePopup }) { //pros from mod
                                 onChange={handleChange}
                                 className="w-full px-4 py-2 border rounded-lg"
                             >
-                                <option value="" disabled selected>Select</option>
+                                <option value="" disabled>
+                                    Select
+                                </option>
                                 <option value="Extraction">Extraction</option>
                                 <option value="Classification">Classification</option>
                             </select>
@@ -68,7 +70,7 @@ export default function NewModelPopup({ isOpen, togglePopup }) { //pros from mod
                                 onChange={handleChange}
                                 className="w-full px-4 py-2 border rounded-lg"
                             >
-                                <option value="" disabled selected>
+                                <option value="" disabled>
                                     Neural (Recommended)
                                 </option>
                                 <option value="Model-1">Model 1</option>
