@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-import Sidebar from '../components/Navbar/Sidebar';
+import Sidebar from '../components/Navigations/Sidebar';
 import ModelLibrary from '../components/ApplicationLandingScreen/ModelLibrary/ModelLibrary';
 import LabelData from '../components/ApplicationLandingScreen/LabelData/LabelData';
 import Model from '../components/ApplicationLandingScreen/Model/Model';
 import Test from '../components/ApplicationLandingScreen/Test/Test';
 import Settings from '../components/ApplicationLandingScreen/Settings/Settings';
 import Support from '../components/ApplicationLandingScreen/Support/Support';
-import Navbar from '../components/Navbar/Navbar';
+import Navbar from '../components/Navigations/Navbar';
 
 export default function ApplicationLandingScreen() {
   //setting up a component state for the screen from sidebar
