@@ -113,7 +113,17 @@
     --chart-5: 340 75% 55%
   }
 }
+@font-face {
+  font-family: 'Aptos';
+  src: url('./assets/fonts/Aptos-SemiBold.ttf') format('woff2'),
+       url('./assets/fonts/Aptos-SemiBold.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
 
+body {
+  font-family: 'Aptos', sans-serif;
+}
 @layer base {
   * {
     @apply border-border;
