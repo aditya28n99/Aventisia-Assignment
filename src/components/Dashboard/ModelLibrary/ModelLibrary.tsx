@@ -11,7 +11,7 @@ import TableComponent from "@/components/Table/Table";
 
 const ModelLibrary: React.FC = () => {
   return (
-    <div className="p-5 pt-0 rounded-md bg-white h-[740px]" >
+    <div className="p-5 pt-0 rounded-md bg-white h-[720px]" >
       {/*Top Section for model for searching sorting*/}
       <div className="flex flex-col gap-3 bg-white pt-5 z-10">
         <div className="flex justify-between items-center">
@@ -43,11 +43,12 @@ const ModelLibrary: React.FC = () => {
           <DateRangePicker/>
         </div>
         {/* Mid Section (Table) */}
-        <div className="rounded-lg bg-white h-[488px] overflow-scroll">
+        <div className="rounded-lg bg-white h-[488px] overflow-scroll"
+        style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
           <TableComponent/>
         </div>
         {/* Bottom Section (Pagination) */}
-        <div className="mt-[50px]">
+        <div className="mt-[30px]">
           <PaginationComponent />
         </div>
       </div>

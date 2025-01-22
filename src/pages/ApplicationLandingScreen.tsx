@@ -30,7 +30,8 @@ const ApplicationLandingScreen: React.FC = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   return (
-    <div className="min-h-screen bg-[#F8FAFC] font-sans">
+    <div className="min-h-screen bg-[#F8FAFC] font-sans"
+    style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
       <Sidebar isOpen={sidebarOpen} onClose={() => setSidebarOpen(false)} setCurrentView={setCurrentView} currentView={currentView}/>
       <div className="lg:pl-72">
       <Navbar onSidebarToggle={() => setSidebarOpen(true)} />
