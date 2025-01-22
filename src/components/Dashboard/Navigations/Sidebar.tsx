@@ -101,8 +101,8 @@ const Sidebar: FC<SidebarProps> = ({ isOpen, onClose, setCurrentView, currentVie
       </Dialog>
 
       {/* Static Sidebar */}
-      <div className="hidden lg:fixed lg:inset-y-0 lg:z-50 lg:flex lg:w-72 w-[264px]">
-        <div className="flex grow flex-col border shadow-sm bg-white overflow-y-auto w-[264px]">
+      <div className="hidden lg:fixed lg:inset-y-0 lg:z-10 lg:flex lg:w-72 w-[264px]">
+        <div className="flex grow flex-col drop-shadow-md bg-white overflow-y-auto w-[264px]">
           <div className="flex items-center bg-[#F8FAFC] ">
             <img
               alt="Your Company"

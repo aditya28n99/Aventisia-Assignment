@@ -19,7 +19,7 @@ const Button: FC<ButtonProps> = ({
     <button
       onClick={onClick}
       className={`flex gap-2 items-center p-2 rounded-lg text-[16px] ${
-        isActive ? "bg-indigo-900 text-white" : "hover:bg-indigo-900 hover:text-white"
+        isActive ? "bg-[#1E1B4B] text-white" : "hover:bg-[#4F46E5] hover:text-white"
       } ${className}`}
     >
       {Icon && <Icon className="text-current" />}
