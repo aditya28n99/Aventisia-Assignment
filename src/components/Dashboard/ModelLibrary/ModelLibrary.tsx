@@ -11,7 +11,7 @@ import { useModelStore } from "../../../stores/useModelStore";
 
 
 const ModelLibrary: React.FC = () => {
-  const { searchText, setSearchText, data } = useModelStore();
+  const { searchText, setSearchText, sortOrder, setSortOrder } = useModelStore();
 
   const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchText(e.target.value);
@@ -45,7 +45,8 @@ const ModelLibrary: React.FC = () => {
             />
           </div>
           {/* Here we can filter out data by A-Z or Z-A */}
-          <button className="flex items-center gap-2 border rounded-lg px-4 py-2">
+          <button className="flex items-center gap-2 border rounded-lg px-4 py-2"
+          onClick={()=>setSortOrder(sortOrder === "asc" ? "desc" : "asc")}>
             <PiArrowsLeftRightLight className="text-gray-500" />
             <h1 className="font-extralight">Filter</h1>
           </button>

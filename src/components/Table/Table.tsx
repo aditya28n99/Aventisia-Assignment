@@ -15,20 +15,36 @@ import { useModelStore } from '../../stores/useModelStore';
 
 
 const TableComponent: React.FC = () => {
-    const { data, searchText} = useModelStore();
+    const { data, searchText, sortOrder, setSortOrder} = useModelStore();
 
     const serchedData = data.filter((item) =>
         item.modelName.toLowerCase().includes(searchText.toLowerCase()) ||
         item.id.toLowerCase().includes(searchText.toLowerCase())
     );
 
+    // Sort data based on sort order
+    const sortedData = [...serchedData].sort((a, b) => {
+        if (sortOrder === "asc") {
+            return a.modelName.localeCompare(b.modelName);
+        }else if (sortOrder === "desc") {
+            return b.modelName.localeCompare(a.modelName);
+        }else{
+            return 0;
+        }
+    });
     return (
         <Table className="text-[16px]">
             <TableHeader>
                 <TableRow>
                     <TableHead>
                         <div className="flex items-center">
-                            Model Name <BiSortAlt2 className="ml-2" />
+                            Model Name 
+                            <button
+                                onClick={() => {
+                                    setSortOrder(sortOrder === "asc" ? "desc" : "asc")
+                                }}>
+                                <BiSortAlt2 className="ml-2" />
+                            </button>
                         </div>
                     </TableHead>
                     <TableHead><div className="flex items-center">
@@ -52,7 +68,7 @@ const TableComponent: React.FC = () => {
                 </TableRow>
             </TableHeader>
             <TableBody>
-                {serchedData.map((invoice) => (
+                {sortedData.map((invoice) => (
                     <TableRow key={invoice.id}>
                         <TableCell className="font-medium py-[12.5px]">{invoice.modelName}</TableCell>
                         <TableCell>{invoice.modelType}</TableCell>

@@ -16,6 +16,9 @@ interface ModelStore {
   data: typeof initialData;
   searchText: string;
   setSearchText: (text: string) => void;
+  sortOrder: "asc" | "desc";
+  setSortOrder: (order: "asc" | "desc") => void;
+
   setData: (data: typeof initialData) => void;
   filterData: () => void;
   filteredData: any[];
@@ -24,6 +27,9 @@ interface ModelStore {
 export const useModelStore = create<ModelStore>((set, get) => ({
   data: initialData,
   searchText: "",
+  sortOrder: "asc",
+  setSortOrder: (order) => set({ sortOrder: order }),
+
   setData: (data) => set({ data }),
   filteredData: [],
   setSearchText: (text: any) => set({ searchText: text }),
