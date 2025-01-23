@@ -15,11 +15,19 @@ import { useModelStore } from '../../stores/useModelStore';
 
 
 const TableComponent: React.FC = () => {
-    const { data, searchText, sortOrder, setSortOrder} = useModelStore();
+    const { data, searchText, sortOrder, setSortOrder, startDate, endDate} = useModelStore();
 
-    const serchedData = data.filter((item) =>
-        item.modelName.toLowerCase().includes(searchText.toLowerCase()) ||
-        item.id.toLowerCase().includes(searchText.toLowerCase())
+    const serchedData = data.filter((item) =>{
+        const matchesSearch =
+          item.modelName.toLowerCase().includes(searchText.toLowerCase()) ||
+          item.id.toLowerCase().includes(searchText.toLowerCase());
+    
+        const createdDate = new Date(item.createdOn);
+        const matchesDateRange =
+          (!startDate || createdDate >= startDate) && (!endDate || createdDate <= endDate);
+    
+        return matchesSearch && matchesDateRange;
+    }
     );
 
     // Sort data based on sort order

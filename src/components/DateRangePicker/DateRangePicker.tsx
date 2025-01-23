@@ -3,16 +3,19 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { AiOutlineCalendar } from "react-icons/ai";
 import { format } from "date-fns";
+import { useModelStore} from '../../stores/useModelStore';
+
 
 const DateRangePicker: React.FC = () => {
-  const [startDate, setStartDate] = useState<Date | null>(new Date("2023-01-09"));
-  const [endDate, setEndDate] = useState<Date | null>(new Date("2023-01-10"));
+  // const [startDate, setStartDate] = useState<Date | null>(new Date("2023-01-09"));
+  // const [endDate, setEndDate] = useState<Date | null>(new Date("2023-01-10"));
+  const { startDate, endDate, setDateRange } = useModelStore();
+
 
   // Function to handle date changes
   const handleDateChange = (dates: [Date | null, Date | null]) => {
     const [start, end] = dates;
-    setStartDate(start);
-    setEndDate(end);
+    setDateRange(start, end);
   };
 
   // Format the date to display when picked

@@ -18,6 +18,10 @@ interface ModelStore {
   setSearchText: (text: string) => void;
   sortOrder: "asc" | "desc";
   setSortOrder: (order: "asc" | "desc") => void;
+  
+  startDate: Date | null;
+  endDate: Date | null;
+  setDateRange: (start: Date | null, end: Date | null) => void;
 
   setData: (data: typeof initialData) => void;
   filterData: () => void;
@@ -29,7 +33,9 @@ export const useModelStore = create<ModelStore>((set, get) => ({
   searchText: "",
   sortOrder: "asc",
   setSortOrder: (order) => set({ sortOrder: order }),
-
+  startDate: new Date("01/01/2022"),
+  endDate: new Date(),
+  setDateRange: (start, end) => set(() => ({ startDate: start, endDate: end })),
   setData: (data) => set({ data }),
   filteredData: [],
   setSearchText: (text: any) => set({ searchText: text }),
