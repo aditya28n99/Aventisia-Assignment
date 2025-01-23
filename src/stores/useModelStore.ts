@@ -32,7 +32,7 @@ export const useModelStore = create<ModelStore>((set, get) => ({
   searchText: "",
   sortOrder: "asc",
   setSortOrder: (order) => set({ sortOrder: order }),
-  startDate: new Date("01/01/2022"),
+  startDate: new Date("01/01/2024"),
   endDate: new Date(),
   setDateRange: (start, end) => set(() => ({ startDate: start, endDate: end })),
   setSearchText: (text: any) => set({ searchText: text }),
