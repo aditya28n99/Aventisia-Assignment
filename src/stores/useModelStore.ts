@@ -25,6 +25,11 @@ interface ModelStore {
   currentPage: number;
   itemsPerPage: number;
   setCurrentPage: (page: number) => void;
+
+  isPopoupOpen: boolean;
+  setIsPopupOpen: (isPopupOpen: boolean) => void;
+
+
 }
 
 export const useModelStore = create<ModelStore>((set, get) => ({
@@ -40,4 +45,7 @@ export const useModelStore = create<ModelStore>((set, get) => ({
   currentPage: 0,
   itemsPerPage: 10,
   setCurrentPage: (page: any) => set({ currentPage: page }),
+
+  isPopoupOpen: false,
+  setIsPopupOpen: (isPopoupOpen) => set({isPopoupOpen}),
 }));

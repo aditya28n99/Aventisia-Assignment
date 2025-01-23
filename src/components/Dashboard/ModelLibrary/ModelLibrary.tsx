@@ -7,11 +7,12 @@ import DateRangePicker from "@/components/DateRangePicker/DateRangePicker";
 import PaginationComponent from "@/components/Pagination/Pagination";
 import TableComponent from "@/components/Table/Table";
 import { useModelStore } from "../../../stores/useModelStore";
+import PopupComponent from "@/components/Table/Popup";
 
 
 const ModelLibrary: React.FC = () => {
 
-  const { data, searchText, setSearchText, sortOrder, setSortOrder, startDate, endDate, currentPage, itemsPerPage, setCurrentPage,} = useModelStore();
+  const { data, searchText, setSearchText, sortOrder, setSortOrder, startDate, endDate, currentPage, itemsPerPage, setCurrentPage, isPopoupOpen, setIsPopupOpen} = useModelStore();
   
   const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchText(e.target.value);
@@ -50,6 +51,10 @@ const ModelLibrary: React.FC = () => {
   
     const paginatedData = PaginatedData();
     
+    const TogglePopup = () => {
+      setIsPopupOpen(!isPopoupOpen);
+      console.log(isPopoupOpen + "Hi")
+  };
 
   return (
     <div className="p-5 pt-0 rounded-md bg-white h-[720px]" >
@@ -59,7 +64,7 @@ const ModelLibrary: React.FC = () => {
           <h1 className="text-lg font-medium">Model Library</h1>
           {/* Importing Button for create new model. */}
           <Button
-            onClick={() => { }}
+            onClick={TogglePopup}
             className="bg-[#4F46E5] text-white px-4 py-2 font-semibold text-base rounded-xl"
             icon={FiPlus}>
             Create New Model
@@ -95,6 +100,7 @@ const ModelLibrary: React.FC = () => {
           <PaginationComponent  dataLength={sortedData.length} currentPage={currentPage} itemsPerPage={itemsPerPage} onPageChange={(e)=>setCurrentPage(e)}/>
         </div>
       </div>
+      {isPopoupOpen ? <PopupComponent isOpen={isPopoupOpen} onClose={TogglePopup} /> : <></>}
     </div>
   )
 };
