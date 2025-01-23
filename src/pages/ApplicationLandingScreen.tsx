@@ -1,7 +1,7 @@
 import LabelData from '@/components/Dashboard/LabelData/LabelData';
 import ModelLibrary from '@/components/Dashboard/ModelLibrary/ModelLibrary';
-import Navbar from '@/components/Dashboard/Navigations/Navbar';
-import Sidebar from '@/components/Dashboard/Navigations/Sidebar';
+import Navbar from '@/components/Navigations/Navbar';
+import Sidebar from '@/components/Navigations/Sidebar';
 import React, { useState } from 'react';
 
 

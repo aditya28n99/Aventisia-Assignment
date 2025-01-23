@@ -1,7 +1,7 @@
 import React from "react";
 import { PiArrowsLeftRightLight } from "react-icons/pi";
 import { FiPlus } from "react-icons/fi";
-import Button from "../../Dashboard/Navigations/Button";
+import Button from "../../Navigations/Button";
 import { Search } from 'lucide-react';
 import DateRangePicker from "@/components/DateRangePicker/DateRangePicker";
 import PaginationComponent from "@/components/Pagination/Pagination";
