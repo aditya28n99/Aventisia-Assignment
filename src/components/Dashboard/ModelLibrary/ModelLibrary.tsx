@@ -7,9 +7,17 @@ import { Search } from 'lucide-react';
 import DateRangePicker from "@/components/DateRangePicker/DateRangePicker";
 import PaginationComponent from "@/components/Pagination/Pagination";
 import TableComponent from "@/components/Table/Table";
+import { useModelStore } from "../../../stores/useModelStore";
 
 
 const ModelLibrary: React.FC = () => {
+  const { searchText, setSearchText, data } = useModelStore();
+
+  const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchText(e.target.value);
+    // return console.log("serched text:", e.target.value);
+  };
+
   return (
     <div className="p-5 pt-0 rounded-md bg-white h-[720px]" >
       {/*Top Section for model for searching sorting*/}
@@ -32,7 +40,8 @@ const ModelLibrary: React.FC = () => {
               type="text"
               placeholder="Search By Name, ID"
               className="bg-transparent outline-none pl-2"
-              onChange={() => { }}
+              value={searchText}
+              onChange={handleSearch}
             />
           </div>
           {/* Here we can filter out data by A-Z or Z-A */}
@@ -40,12 +49,12 @@ const ModelLibrary: React.FC = () => {
             <PiArrowsLeftRightLight className="text-gray-500" />
             <h1 className="font-extralight">Filter</h1>
           </button>
-          <DateRangePicker/>
+          <DateRangePicker />
         </div>
         {/* Mid Section (Table) */}
         <div className="rounded-lg bg-white h-[488px] overflow-scroll"
-        style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
-          <TableComponent/>
+          style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
+          <TableComponent />
         </div>
         {/* Bottom Section (Pagination) */}
         <div className="mt-[30px]">

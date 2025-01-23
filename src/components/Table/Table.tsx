@@ -9,9 +9,19 @@ import {
 import { BsThreeDotsVertical } from "react-icons/bs";
 import { BiSortAlt2 } from "react-icons/bi";
 
-import { initialData } from '../../Database/data';
+// import { initialData } from '../../Database/data';
+
+import { useModelStore } from '../../stores/useModelStore';
+
 
 const TableComponent: React.FC = () => {
+    const { data, searchText} = useModelStore();
+
+    const serchedData = data.filter((item) =>
+        item.modelName.toLowerCase().includes(searchText.toLowerCase()) ||
+        item.id.toLowerCase().includes(searchText.toLowerCase())
+    );
+
     return (
         <Table className="text-[16px]">
             <TableHeader>
@@ -42,7 +52,7 @@ const TableComponent: React.FC = () => {
                 </TableRow>
             </TableHeader>
             <TableBody>
-                {initialData.map((invoice) => (
+                {serchedData.map((invoice) => (
                     <TableRow key={invoice.id}>
                         <TableCell className="font-medium py-[12.5px]">{invoice.modelName}</TableCell>
                         <TableCell>{invoice.modelType}</TableCell>
