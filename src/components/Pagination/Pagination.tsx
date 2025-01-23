@@ -1,24 +1,24 @@
-import { useState } from "react";
 import ReactPaginate from "react-paginate";
-import { initialData } from "@/Database/data";
+import { useModelStore } from "../../stores/useModelStore";
 
 const PaginationComponent: React.FC = () => {
-    const [currentPage, setCurrentPage] = useState(0);
 
-    const itemsPerPage = 10;
+    const { data, currentPage, setCurrentPage, itemsPerPage } = useModelStore();
+    const totalPages = Math.ceil(data.length / itemsPerPage);
+
     const offset = currentPage * itemsPerPage;
-    const currentItems = initialData.slice(offset, offset + itemsPerPage);
+    // const currentItems = data.slice(offset, offset + itemsPerPage);
 
     return (
         <div className="mt-4 flex justify-between items-center">
             <p>
-                Showing {offset + 1} to {Math.min(offset + itemsPerPage, initialData.length)}{" "}
-                out of {initialData.length} results
+                Showing {offset + 1} to {Math.min(offset + itemsPerPage, data.length)}{" "}
+                out of {data.length} results
             </p>
             <ReactPaginate
                 previousLabel={"<"}
                 nextLabel={">"}
-                pageCount={Math.ceil(initialData.length / itemsPerPage)}
+                pageCount={totalPages}
                 onPageChange={(e) => setCurrentPage(e.selected)}
                 containerClassName={"flex gap-2"}
                 pageClassName={"px-3 py-1 rounded-full cursor-pointer"}

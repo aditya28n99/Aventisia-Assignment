@@ -18,14 +18,13 @@ interface ModelStore {
   setSearchText: (text: string) => void;
   sortOrder: "asc" | "desc";
   setSortOrder: (order: "asc" | "desc") => void;
-  
   startDate: Date | null;
   endDate: Date | null;
   setDateRange: (start: Date | null, end: Date | null) => void;
 
-  setData: (data: typeof initialData) => void;
-  filterData: () => void;
-  filteredData: any[];
+  currentPage: number;
+  itemsPerPage: number;
+  setCurrentPage: (page: number) => void;
 }
 
 export const useModelStore = create<ModelStore>((set, get) => ({
@@ -36,15 +35,9 @@ export const useModelStore = create<ModelStore>((set, get) => ({
   startDate: new Date("01/01/2022"),
   endDate: new Date(),
   setDateRange: (start, end) => set(() => ({ startDate: start, endDate: end })),
-  setData: (data) => set({ data }),
-  filteredData: [],
   setSearchText: (text: any) => set({ searchText: text }),
-  filterData: () => {
-    const { data, searchText } = get();
-    const filtered = data.filter((item: { modelName: string; createdOn: string | number | Date; }) => {
-      const matchesSearch = item.modelName.toLowerCase().includes(searchText.toLowerCase());
-      return matchesSearch;
-    });
-    set({ filteredData: filtered });
-  },
+
+  currentPage: 0,
+  itemsPerPage: 10,
+  setCurrentPage: (page: any) => set({ currentPage: page }),
 }));

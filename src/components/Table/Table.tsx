@@ -15,7 +15,7 @@ import { useModelStore } from '../../stores/useModelStore';
 
 
 const TableComponent: React.FC = () => {
-    const { data, searchText, sortOrder, setSortOrder, startDate, endDate} = useModelStore();
+    const { data, searchText, sortOrder, setSortOrder, startDate, endDate, currentPage, itemsPerPage} = useModelStore();
 
     const serchedData = data.filter((item) =>{
         const matchesSearch =
@@ -40,6 +40,15 @@ const TableComponent: React.FC = () => {
             return 0;
         }
     });
+
+    const PaginatedData = () =>{
+        const startIndex = currentPage * itemsPerPage;
+        const endIndex = startIndex + itemsPerPage;
+        return sortedData.slice(startIndex, endIndex);
+      }
+  
+    const newPaginatedData = PaginatedData();
+
     return (
         <Table className="text-[16px]">
             <TableHeader>
@@ -76,7 +85,7 @@ const TableComponent: React.FC = () => {
                 </TableRow>
             </TableHeader>
             <TableBody>
-                {sortedData.map((invoice) => (
+                {newPaginatedData.map((invoice) => (
                     <TableRow key={invoice.id}>
                         <TableCell className="font-medium py-[12.5px]">{invoice.modelName}</TableCell>
                         <TableCell>{invoice.modelType}</TableCell>
