@@ -9,46 +9,14 @@ import {
 import { BsThreeDotsVertical } from "react-icons/bs";
 import { BiSortAlt2 } from "react-icons/bi";
 
-// import { initialData } from '../../Database/data';
+interface TableProps {
+    data: any[]; 
+    sortOrder: string;
+    setSortOrder: (order: "asc"| "desc") => void;
+  }
 
-import { useModelStore } from '../../stores/useModelStore';
-
-
-const TableComponent: React.FC = () => {
-    const { data, searchText, sortOrder, setSortOrder, startDate, endDate, currentPage, itemsPerPage} = useModelStore();
-
-    const serchedData = data.filter((item) =>{
-        const matchesSearch =
-          item.modelName.toLowerCase().includes(searchText.toLowerCase()) ||
-          item.id.toLowerCase().includes(searchText.toLowerCase());
+const TableComponent: React.FC<TableProps> = ({data, sortOrder, setSortOrder}) => {
     
-        const createdDate = new Date(item.createdOn);
-        const matchesDateRange =
-          (!startDate || createdDate >= startDate) && (!endDate || createdDate <= endDate);
-    
-        return matchesSearch && matchesDateRange;
-    }
-    );
-
-    // Sort data based on sort order
-    const sortedData = [...serchedData].sort((a, b) => {
-        if (sortOrder === "asc") {
-            return a.modelName.localeCompare(b.modelName);
-        }else if (sortOrder === "desc") {
-            return b.modelName.localeCompare(a.modelName);
-        }else{
-            return 0;
-        }
-    });
-
-    const PaginatedData = () =>{
-        const startIndex = currentPage * itemsPerPage;
-        const endIndex = startIndex + itemsPerPage;
-        return sortedData.slice(startIndex, endIndex);
-      }
-  
-    const newPaginatedData = PaginatedData();
-
     return (
         <Table className="text-[16px]">
             <TableHeader>
@@ -56,8 +24,7 @@ const TableComponent: React.FC = () => {
                     <TableHead>
                         <div className="flex items-center">
                             Model Name 
-                            <button
-                                onClick={() => {
+                            <button onClick={() => {
                                     setSortOrder(sortOrder === "asc" ? "desc" : "asc")
                                 }}>
                                 <BiSortAlt2 className="ml-2" />
@@ -85,7 +52,7 @@ const TableComponent: React.FC = () => {
                 </TableRow>
             </TableHeader>
             <TableBody>
-                {newPaginatedData.map((invoice) => (
+                {data.map((invoice) => (
                     <TableRow key={invoice.id}>
                         <TableCell className="font-medium py-[12.5px]">{invoice.modelName}</TableCell>
                         <TableCell>{invoice.modelType}</TableCell>

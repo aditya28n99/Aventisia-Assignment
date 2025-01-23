@@ -2,7 +2,6 @@ import React from "react";
 import { PiArrowsLeftRightLight } from "react-icons/pi";
 import { FiPlus } from "react-icons/fi";
 import Button from "../../Dashboard/Navigations/Button";
-// import { initialData } from '../../../Database/data'
 import { Search } from 'lucide-react';
 import DateRangePicker from "@/components/DateRangePicker/DateRangePicker";
 import PaginationComponent from "@/components/Pagination/Pagination";
@@ -11,12 +10,46 @@ import { useModelStore } from "../../../stores/useModelStore";
 
 
 const ModelLibrary: React.FC = () => {
-  const { searchText, setSearchText, sortOrder, setSortOrder } = useModelStore();
 
+  const { data, searchText, setSearchText, sortOrder, setSortOrder, startDate, endDate, currentPage, itemsPerPage, setCurrentPage,} = useModelStore();
+  
   const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchText(e.target.value);
     // return console.log("serched text:", e.target.value);
   };
+
+    const serchedData = data.filter((item) =>{
+        const matchesSearch =
+          item.modelName.toLowerCase().includes(searchText.toLowerCase()) ||
+          item.id.toLowerCase().includes(searchText.toLowerCase());
+    
+        const createdDate = new Date(item.createdOn);
+        const matchesDateRange =
+          (!startDate || createdDate >= startDate) && (!endDate || createdDate <= endDate);
+    
+        return matchesSearch && matchesDateRange;
+    }
+    );
+
+    // Sort data based on sort order
+    const sortedData = [...serchedData].sort((a, b) => {
+        if (sortOrder === "asc") {
+            return a.modelName.localeCompare(b.modelName);
+        }else if (sortOrder === "desc") {
+            return b.modelName.localeCompare(a.modelName);
+        }else{
+            return 0;
+        }
+    });
+
+    const PaginatedData = () =>{
+        const startIndex = currentPage * itemsPerPage;
+        const endIndex = startIndex + itemsPerPage;
+        return sortedData.slice(startIndex, endIndex);
+      }
+  
+    const paginatedData = PaginatedData();
+    
 
   return (
     <div className="p-5 pt-0 rounded-md bg-white h-[720px]" >
@@ -46,7 +79,7 @@ const ModelLibrary: React.FC = () => {
           </div>
           {/* Here we can filter out data by A-Z or Z-A */}
           <button className="flex items-center gap-2 border rounded-lg px-4 py-2"
-          onClick={()=>setSortOrder(sortOrder === "asc" ? "desc" : "asc")}>
+            onClick={() => setSortOrder(sortOrder === "asc" ? "desc" : "asc")}>
             <PiArrowsLeftRightLight className="text-gray-500" />
             <h1 className="font-extralight">Filter</h1>
           </button>
@@ -55,11 +88,11 @@ const ModelLibrary: React.FC = () => {
         {/* Mid Section (Table) */}
         <div className="rounded-lg bg-white h-[488px] overflow-scroll"
           style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
-          <TableComponent />
+          <TableComponent  data={paginatedData} setSortOrder={setSortOrder} sortOrder={sortOrder} />
         </div>
         {/* Bottom Section (Pagination) */}
         <div className="mt-[30px]">
-          <PaginationComponent />
+          <PaginationComponent  dataLength={sortedData.length} currentPage={currentPage} itemsPerPage={itemsPerPage} onPageChange={(e)=>setCurrentPage(e)}/>
         </div>
       </div>
     </div>
