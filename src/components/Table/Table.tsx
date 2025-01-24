@@ -10,23 +10,23 @@ import { BsThreeDotsVertical } from "react-icons/bs";
 import { BiSortAlt2 } from "react-icons/bi";
 
 interface TableProps {
-    data: any[]; 
+    data: any[];
     sortOrder: string;
-    setSortOrder: (order: "asc"| "desc") => void;
-  }
+    setSortOrder: (order: "asc" | "desc") => void;
+}
 
-const TableComponent: React.FC<TableProps> = ({data, sortOrder, setSortOrder}) => {
-    
+const TableComponent: React.FC<TableProps> = ({ data, sortOrder, setSortOrder }) => {
+
     return (
         <Table className="text-[16px]">
             <TableHeader>
                 <TableRow>
                     <TableHead>
                         <div className="flex text-black font-semibold items-center">
-                            Model Name 
+                            Model Name
                             <button onClick={() => {
-                                    setSortOrder(sortOrder === "asc" ? "desc" : "asc")
-                                }}>
+                                setSortOrder(sortOrder === "asc" ? "desc" : "asc")
+                            }}>
                                 <BiSortAlt2 className=" ml-2 text-[#A3A3A3]" />
                             </button>
                         </div>
@@ -54,7 +54,12 @@ const TableComponent: React.FC<TableProps> = ({data, sortOrder, setSortOrder}) =
             <TableBody>
                 {data.map((invoice) => (
                     <TableRow key={invoice.id}>
-                        <TableCell className="font-semibold py-[12.5px]">{invoice.modelName}</TableCell>
+                        <TableCell className="py-[12.5px]">
+                            <div>
+                                <p className="font-semibold">{invoice.modelName}</p>
+                                <p className="text-sm text-[#767676]">ID: {invoice.id}</p>
+                            </div>
+                        </TableCell>
                         <TableCell>{invoice.modelType}</TableCell>
                         <TableCell className="truncate max-w-xs">{invoice.description}</TableCell>
                         <TableCell className="text-center">{invoice.createdOn}</TableCell>
