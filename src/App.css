@@ -114,15 +114,31 @@
   }
 }
 @font-face {
-  font-family: 'Aptos';
+  font-family: 'Aptos-reguler';
+  src: url('./assets/fonts/Aptos.ttf') format('woff2'),
+       url('./assets/fonts/Aptos.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Aptos-semibold';
   src: url('./assets/fonts/Aptos-SemiBold.ttf') format('woff2'),
        url('./assets/fonts/Aptos-SemiBold.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
 }
 
-body {
-  font-family: 'Aptos', sans-serif;
+.Aptos-semibold {
+  font-family: 'Aptos-semibold', sans-serif;
+}
+
+.Aptos-reguler{
+  font-family: 'Aptos-reguler', sans-serif;
+}
+
+body{
+  font-family: 'Aptos-reguler', sans-serif;
 }
 @layer base {
   * {

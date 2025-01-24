@@ -22,31 +22,31 @@ const TableComponent: React.FC<TableProps> = ({data, sortOrder, setSortOrder}) =
             <TableHeader>
                 <TableRow>
                     <TableHead>
-                        <div className="flex items-center">
+                        <div className="flex text-black font-semibold items-center">
                             Model Name 
                             <button onClick={() => {
                                     setSortOrder(sortOrder === "asc" ? "desc" : "asc")
                                 }}>
-                                <BiSortAlt2 className="ml-2" />
+                                <BiSortAlt2 className=" ml-2 text-[#A3A3A3]" />
                             </button>
                         </div>
                     </TableHead>
-                    <TableHead><div className="flex items-center">
-                        Model Type <BiSortAlt2 className="ml-2" />
+                    <TableHead><div className="flex text-black font-semibold items-center">
+                        Model Type <BiSortAlt2 className=" ml-2 text-[#A3A3A3]" />
                     </div></TableHead>
-                    <TableHead><div className="flex items-center">
-                        Description <BiSortAlt2 className="ml-2" />
+                    <TableHead><div className="flex text-black font-semibold items-center">
+                        Description <BiSortAlt2 className=" ml-2 text-[#A3A3A3]" />
                     </div></TableHead>
-                    <TableHead><div className="flex items-center">
-                        Created On <BiSortAlt2 className="ml-2" />
+                    <TableHead><div className="flex text-black font-semibold items-center">
+                        Created On <BiSortAlt2 className=" ml-2 text-[#A3A3A3]" />
                     </div></TableHead>
-                    <TableHead><div className="flex items-center">
-                        Last Trained On <BiSortAlt2 className="ml-2" />
+                    <TableHead><div className="flex text-black font-semibold items-center">
+                        Last Trained On <BiSortAlt2 className=" ml-2 text-[#A3A3A3]" />
                     </div></TableHead>
-                    <TableHead><div className="flex items-center">
-                        Status <BiSortAlt2 className="ml-2" />
+                    <TableHead><div className="flex text-black font-semibold items-center">
+                        Status <BiSortAlt2 className=" ml-2 text-[#A3A3A3]" />
                     </div></TableHead>
-                    <TableHead><div className="flex items-center">
+                    <TableHead><div className="flex text-black font-semibold items-center">
                         Action
                     </div></TableHead>
                 </TableRow>
@@ -54,7 +54,7 @@ const TableComponent: React.FC<TableProps> = ({data, sortOrder, setSortOrder}) =
             <TableBody>
                 {data.map((invoice) => (
                     <TableRow key={invoice.id}>
-                        <TableCell className="font-medium py-[12.5px]">{invoice.modelName}</TableCell>
+                        <TableCell className="font-semibold py-[12.5px]">{invoice.modelName}</TableCell>
                         <TableCell>{invoice.modelType}</TableCell>
                         <TableCell className="truncate max-w-xs">{invoice.description}</TableCell>
                         <TableCell className="text-center">{invoice.createdOn}</TableCell>

@@ -113,7 +113,7 @@ const Sidebar: FC<SidebarProps> = ({ isOpen, onClose, setCurrentView, currentVie
           {/* Add Sidebar navigation */}
           <div className="flex flex-col gap-7 m-5">
             <div className="flex flex-col gap-2">
-              <h1 className='text-sm'>Model Library</h1>
+              <h1 className='text-sm font-semibold'>Model Library</h1>
               <Button
                 onClick={() => setCurrentView('ModelLibrary')}
                 isActive={currentView === "ModelLibrary"}
@@ -122,7 +122,7 @@ const Sidebar: FC<SidebarProps> = ({ isOpen, onClose, setCurrentView, currentVie
               </Button>
             </div>
             <div className="flex flex-col gap-2">
-              <h1 className='text-sm'>Extraction Builder</h1>
+              <h1 className='text-sm font-semibold'>Extraction Builder</h1>
               <Button
                 onClick={() => setCurrentView('LabelData')}
                 isActive={currentView === "LabelData"}
@@ -143,7 +143,7 @@ const Sidebar: FC<SidebarProps> = ({ isOpen, onClose, setCurrentView, currentVie
               </Button>
             </div>
             <div className="flex flex-col gap-2">
-              <h1 className='text-sm'>Help</h1>
+              <h1 className='text-sm font-semibold'>Help</h1>
               <Button
                 onClick={() => setCurrentView('Settings')}
                 isActive={currentView === "Settings"}
