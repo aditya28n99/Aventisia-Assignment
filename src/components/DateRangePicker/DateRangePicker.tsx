@@ -22,7 +22,7 @@ const DateRangePicker: React.FC = () => {
   const formatDate = (date: Date | null): string => (date ? format(date, "MMM dd") : "");
 
   return (
-    <div className="flex items-center text-center justify-center py-2 border rounded-lg w-min">
+    <div className="flex items-center text-center justify-center py-2 rounded-lg w-min bg-[#F9FAFB]">
       <AiOutlineCalendar className="text-gray-500 ml-2" />
       {/* React DatePicker */}
       <DatePicker
