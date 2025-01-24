@@ -62,12 +62,46 @@ This project is a part of the evaluation process for the React.js Front-End Deve
 
   - **Commit**: `d27dcd9` - lib table added with dummy data
 
----
-### Demo
-A live demo of the project can be seen here: [https://aventisia-assignment.onrender.com/]
 
-### Future Enhancements
-- Implement backend functionality to persist model data.
-- Responsive designing
-- Add form validation to the modal for better user experience.
-- Improve accessibility features for a wider audience.
+### Technologies updated:
+- **TypeScript**: For type safety and better development practices.
+- **Tailwind CSS & UI**: For styling, including components from Tailwind UI.
+- **ShadCN Components**: To accelerate component development.
+- **State Management**: Zustand is used for state management due to its simplicity and performance.
+- **Form Handling**: React Hook Form is used for handling form validations and errors.
+
+---
+
+## Features Implemented
+
+### UI Implementation:
+- Implemented a **sidebar** and **navbar** using **Tailwind UI** components.
+- Designed a table with dummy data to display at data from initialdata.
+- **Create New Model** button launches a modal pop-up for adding a new model.
+- model consist **react Hook form**.
+- Responsive layout with **mobile-first design**.
+
+### Functionalities:
+#### Table with Sorting, Pagination, and Search:
+- **Sorting**: Users can sort table entries by specific columns.
+- **Pagination**: Added pagination functionality using the `react-paginate` library for smooth navigation through large datasets.
+- **Search**: Implemented a search bar to filter table rows by model name.
+
+#### Pop-up Modal:
+- Clicking the **Create New Model** button opens a modal pop-up.
+- The modal contains form fields for creating a new model.
+- On clicking **Save**, the entered data is logged to the browser console.
+- Utilized **React Hook Form** for error handling and validations.
+
+#### Fonts and Styling:
+- Attached the **Aptos** font as per project requirements.
+- Integrated **ShadCN components** for cohesive and consistent design.
+- Styled using **Tailwind CSS** for both flexibility and rapid development.
+
+#### State Management:
+- Used **Zustand** for efficient and minimalistic state management.
+
+---
+
+## Demo
+A live demo of the project can be seen here: [https://aventisia-assignment.onrender.com/]

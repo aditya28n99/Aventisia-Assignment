@@ -16,7 +16,7 @@ interface PopupComponentProps {
 const PopupComponent: React.FC<PopupComponentProps> = ({ isOpen, onClose }) => {
     return (
         <Dialog open={isOpen} onOpenChange={onClose}>
-            <DialogContent className="w-[439px] p-0"> 
+            <DialogContent className="max-w-[439px] p-0"> 
                 <DialogHeader>
                     <DialogTitle className=" border-b py-4 px-5" >Create new model</DialogTitle>
                     <div className="pb-4 px-5">
