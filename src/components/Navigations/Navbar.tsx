@@ -92,7 +92,7 @@ export default function Navbar({ onSidebarToggle }: Readonly<NavbarProps>) {
                 src="https://99designs-blog.imgix.net/blog/wp-content/uploads/2022/06/Starbucks_Corporation_Logo_2011.svg-e1657703028844.png?auto=format&q=60&fit=max&w=930"
                 className="h-8 w-8 rounded-full bg-gray-200 "
               />
-              <span className="hidden lg:flex lg:items-center gap-3">
+              <span className="hidden lg:flex lg:items-center gap-5">
                 <span className="ml-4 text-sm font-semibold text-gray-900">
                   <div className="text-left">
                     <h1 className="font-bold text-base">{'Neurotic Spy'}</h1>
