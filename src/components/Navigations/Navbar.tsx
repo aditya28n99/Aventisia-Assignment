@@ -8,6 +8,7 @@ import {
 import {
   Bars3Icon,
 } from '@heroicons/react/24/outline'
+import { MdOutlineKeyboardArrowLeft } from "react-icons/md";
 
 import { Search, Bell, Heart, ChevronDown } from 'lucide-react';
 
@@ -17,27 +18,28 @@ type NavbarProps = {
 export default function Navbar({ onSidebarToggle }: Readonly<NavbarProps>) {
 
   return (
-    <div className="sticky top-0 z-40 flex p-[19px] items-center gap-x-4 border-b border-gray-200 bg-white shadow-sm sm:gap-x-6 sm:px-6">
+    <div className="sticky top-0 z-40 flex p-[18px] items-center gap-x-4 border-b border-gray-200 bg-white shadow-sm sm:gap-x-6 sm:px-6">
       {/* Sidebar toggle button */}
       <button
         type="button"
         onClick={onSidebarToggle}
-        className="-m-2.5 p-2.5 text-gray-700 lg:hidden"
+        className="-m-2.5 p-2.5 text-gray-700 absolute top-5 -left-5"
       >
         <span className="sr-only">Open sidebar</span>
-        <Bars3Icon aria-hidden="true" className="h-6 w-6" />
+        <div className='bg-white py-2 rounded-tl-lg rounded-bl-lg text-[#2563EB]'><MdOutlineKeyboardArrowLeft aria-hidden="true" className="h-6 w-6" /></div>
       </button>
 
       <div className="flex flex-1 items-center justify-between gap-x-4 lg:gap-x-6">
         {/* Navbar Title */}
         <div className="text-center items-center flex-1 sm:flex-none">
-          <h1 className="text-lg font-semibold truncate sm:text-xl">
+          <h1 className="text-xl font-semibold truncate sm:text-xl">
             AI/ML Model Builder
           </h1>
         </div>
 
-        {/* Search Bar */}
-        <div className="hidden sm:flex w-full max-w-md items-center bg-[#F3F3FD] px-3 py-1 rounded-lg text-slate-500">
+       {/* Search Bar */}
+       <div className='hidden sm:flex w-full max-w-md items-center justify-center'>
+        <div className="hidden sm:flex w-[280px] items-center bg-[#F3F3FD] px-3 py-3 rounded-lg text-slate-400">
           <Search className="text-slate-500" />
           <input
             type="text"
@@ -45,10 +47,12 @@ export default function Navbar({ onSidebarToggle }: Readonly<NavbarProps>) {
             className="bg-transparent outline-none pl-2 flex-1"
           />
           <div className="flex items-center gap-1 ml-4">
-            <h1 className="text-2xl">⌘</h1>
+            <h1 className="text-base font-bold">⌘</h1>
             <h2>K</h2>
           </div>
         </div>
+        </div>
+
 
         {/* Right Section */}
         <div className="flex items-center gap-x-4 lg:gap-x-6">
@@ -62,14 +66,14 @@ export default function Navbar({ onSidebarToggle }: Readonly<NavbarProps>) {
             <span className="absolute -top-1 -right-1 flex h-5 w-5 items-center justify-center rounded-full bg-yellow-300 text-xs font-bold text-black">
               2
             </span>
-            <Bell aria-hidden="true" className="h-6 w-6" />
+            <Bell aria-hidden="true" className="h-6 w-6 text-black" />
           </button>
 
           <button
             type="button"
             className="p-2.5 relative text-gray-400 hover:text-gray-500 border rounded-full text-lg"
             >
-            <Heart aria-hidden="true" className="h-6 w-6" />
+            <Heart aria-hidden="true" className="h-6 w-6 text-black" />
           </button>
           </div>
 
@@ -88,7 +92,7 @@ export default function Navbar({ onSidebarToggle }: Readonly<NavbarProps>) {
                 src="https://99designs-blog.imgix.net/blog/wp-content/uploads/2022/06/Starbucks_Corporation_Logo_2011.svg-e1657703028844.png?auto=format&q=60&fit=max&w=930"
                 className="h-8 w-8 rounded-full bg-gray-200 "
               />
-              <span className="hidden lg:flex lg:items-center">
+              <span className="hidden lg:flex lg:items-center gap-3">
                 <span className="ml-4 text-sm font-semibold text-gray-900">
                   <div className="text-left">
                     <h1 className="font-bold text-base">{'Neurotic Spy'}</h1>
